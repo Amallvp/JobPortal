@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from 'dotenv'
-import connectDB from "./Controllers/db.js";
-
+import userRoute from "./Routes/userRoute.js"
+import connectDB from "./Connection/db.js";
+import companyRoute from './Routes/companyRoute.js'
 const app = express();
 dotenv.config({})
 
@@ -18,11 +19,18 @@ const corsDetails={
     credentials:true
 }
 
-app.use(cors(corsDetails))
+app.use(cors(corsDetails)) 
+
+
+// apis
+
+app.use("/api/jobs/user",userRoute) 
+
+app.use("/api/company",companyRoute) 
 
 
 const PORT =process.env.port||5002;
 app.listen(PORT, () => {
   console.log(`server running at ${PORT}`);
-  connectDB()
+connectDB()
 });
