@@ -19,14 +19,14 @@ const JobSchema = new mongoose.Schema(
     ],
 
     salary: {
-      type: Number,
+      type: String,
       required: true,
     },
     location: {
       type: String,
       required: true,
     },
-    jobTitle: {
+    jobType: {
       type: String,
       required: true,
     },
@@ -34,7 +34,7 @@ const JobSchema = new mongoose.Schema(
         type: Number,
         required: true,
       },
-    postion: {
+    position: {
       type: Number,
       required: true,
     },
